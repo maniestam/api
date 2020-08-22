@@ -1,0 +1,232 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "LOGIN DATA SERVICE API",
+		"description": "LOGIN DATA SERVICE API",
+		"license": {
+			"name": "Apache 2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+		}
+	},
+	"host": "localhost:3002",
+	"basePath": "/",
+	"tags": [
+		{
+			"name": "LOGIN",
+			"description": "API for Managing the LOGIN data"
+		}
+	],
+	"schemes": [
+		"http",
+		"https"
+	],
+	"consumes": [
+		"application/json",
+		"multipart/form-data"
+	],
+	"produces": [
+		"application/json"
+	],
+	"paths": {
+		
+		"/api/authentication/login": {
+			"post": {
+				"description": "To Login",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "login",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/login"
+						}
+					}
+				],
+				"produces": [
+					"application/json",
+					"application/xml"
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"403": {
+						"description": "You do not have necessary permissions for the resource",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"Login"
+				]
+			}
+		},
+		"/api/authentication/register": {
+			"post": {
+				"description": "To register",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "details",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/details"
+						}
+					}
+				],
+				"produces": [
+					"application/json",
+					"application/xml"
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"403": {
+						"description": "You do not have necessary permissions for the resource",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"Login"
+				]
+			}
+		},
+		"/api/authentication/getAllInvites": {
+			"post": {
+				"description": "To getallinvites",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "invites",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/invites"
+						}
+					}
+				],
+				"produces": [
+					"application/json",
+					"application/xml"
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"403": {
+						"description": "You do not have necessary permissions for the resource",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"Login"
+				]
+			}
+		},
+		"/api/authentication/memberAcceptance": {
+			"get": {
+				"description": "To accept invitation",
+				"parameters": [
+					{
+						"in": "body",
+						"name": "checkdata",
+						"required": true,
+						"schema": {
+							"$ref": "#/definitions/checkdata"
+						}
+					}
+				],
+				"produces": [
+					"application/json",
+					"application/xml"
+				],
+				"responses": {
+					"200": {
+						"description": "successful operation",
+						"schema": {
+							"type": "object"
+						}
+					},
+					"403": {
+						"description": "You do not have necessary permissions for the resource",
+						"schema": {
+							"type": "object"
+						}
+					}
+				},
+				"tags": [
+					"Login"
+				]
+			}
+		}
+
+	},
+	"definitions": {
+		
+		"login": {
+			"type": "object",
+			"properties": {
+				"username": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				}
+			}
+		},
+		"details": {
+			"type": "object",
+			"properties": {
+				"username": {
+					"type": "string"
+				},
+				"password": {
+					"type": "string"
+				},
+				"email": {
+					"type": "string"
+				},
+				"gender_uuid": {
+					"type": "number"
+				}
+
+
+			}
+		},
+		"invites": {
+			"type": "object",
+			"properties": {
+				"sortField": {
+					"type": "string"
+				},
+				"sortOrder": {
+					"type": "string"
+				}
+			}
+		},
+		"checkdata": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "string"
+				}
+				
+			}
+		}
+	}
+}
